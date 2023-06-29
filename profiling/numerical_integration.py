@@ -1,5 +1,5 @@
 import argparse
-
+import numpy as np
 import matplotlib.pyplot as plt
 
 
@@ -21,13 +21,11 @@ def parse_arguments():
 
 
 def integrate_f(f, a, b, n):
-    s = []
-    for i in range(n):
-        dx = (b - a) / n
-        x = a + (i + 0.5) * dx
-        y = f(x)
-        s = s + [y * dx]
-    return sum(s)
+    dx = (b - a) / n
+    x = (np.arange(n) + 0.5) * dx + a
+    y = f(x)
+    s=y * dx
+    return np.sum(s)
 
 
 def measure_integration_errors(f, F, n_max, a, b):
