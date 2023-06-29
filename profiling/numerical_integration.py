@@ -21,13 +21,13 @@ def parse_arguments():
 
 
 def integrate_f(f, a, b, n):
-    s = []
+    s = 0
+    dx = (b - a) / n
     for i in range(n):
-        dx = (b - a) / n
         x = a + (i + 0.5) * dx
         y = f(x)
-        s = s + [y * dx]
-    return sum(s)
+        s = s + y * dx
+    return s
 
 
 def measure_integration_errors(f, F, n_max, a, b):
